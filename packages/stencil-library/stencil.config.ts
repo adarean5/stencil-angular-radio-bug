@@ -25,11 +25,10 @@ export const config: Config = {
       directivesArrayFile: '../angular-workspace/projects/component-library/src/lib/stencil-generated/index.ts',
       valueAccessorConfigs: [
         {
-          elementSelectors: ['simple-input', 'custom-input'],
+          elementSelectors: ['cust-radio'],
           event: 'myChange',
-          // This doesn't seem to really work. No matter how you name this prop, the value accessor will always bind to "value"
           targetAttr: 'value',
-          type: 'text',
+          type: 'radio',
         },
       ]
     }),

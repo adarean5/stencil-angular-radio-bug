@@ -1,11 +1,11 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { DIRECTIVES } from './stencil-generated';
 import { defineCustomElements } from 'stencil-library/loader';
-import {TextValueAccessor} from "./stencil-generated/text-value-accessor";
+import {RadioValueAccessor} from "./stencil-generated/radio-value-accessor";
 
 @NgModule({
-  declarations: [...DIRECTIVES, TextValueAccessor],
-  exports: [...DIRECTIVES, TextValueAccessor],
+  declarations: [...DIRECTIVES, RadioValueAccessor],
+  exports: [...DIRECTIVES, RadioValueAccessor],
   providers: [
     {
       provide: APP_INITIALIZER,

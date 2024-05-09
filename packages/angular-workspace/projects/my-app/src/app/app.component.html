@@ -1,8 +1,31 @@
-<div>
-  <h1>Example stencil wrapper</h1>
-  <simple-input [formControl]="formControl"></simple-input>
-  <custom-input [formControl]="customInputControl"></custom-input>
-  <button (click)="onSubmit()">Submit</button>
-  <button (click)="disableInputs()">Disable inputs</button>
-  <button (click)="enableInputs()">Enable inputs</button>
-</div>
+<h1>Stencil radio vs Native radio</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <fieldset class="radio-group">
+    <legend>Custom radio buttons</legend>
+    <cust-radio [formControl]="form.controls.customRadio" name="custom-radio" value="option-1" label="Option 1"></cust-radio>
+    <cust-radio [formControl]="form.controls.customRadio" name="custom-radio" value="option-2" label="Option 2"></cust-radio>
+    <cust-radio [formControl]="form.controls.customRadio" name="custom-radio" value="option-3" label="Option 3"></cust-radio>
+  </fieldset>
+
+  <fieldset class="radio-group">
+    <legend>Native radio buttons</legend>
+    <label>
+      <input [formControl]="form.controls.nativeRadio" type="radio" name="native-radio" value="option-1"/>
+      Option 1
+    </label>
+    <label>
+      <input [formControl]="form.controls.nativeRadio" type="radio" name="native-radio" value="option-2"/>
+      Option 2
+    </label>
+    <label>
+      <input [formControl]="form.controls.nativeRadio" type="radio" name="native-radio" value="option-3"/>
+      Option 3
+    </label>
+  </fieldset>
+
+  <button type="submit">Submit</button>
+</form>
+
+<p>Form value:</p>
+<p>{{ form.value | json }}</p>
+

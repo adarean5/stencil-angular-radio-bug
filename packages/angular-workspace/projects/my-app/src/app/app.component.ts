@@ -1,5 +1,5 @@
 import {Component, DestroyRef, OnInit} from '@angular/core';
-import {FormControl} from "@angular/forms";
+import {FormControl, FormGroup} from "@angular/forms";
 import {takeUntil} from "rxjs";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
@@ -9,31 +9,21 @@ import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  title = 'my-app';
-  formControl = new FormControl(null);
-  customInputControl = new FormControl("Hello world")
+  form = new FormGroup({
+    customRadio: new FormControl('option-1'),
+    nativeRadio: new FormControl('option-1'),
+  })
+
 
   constructor(private dr: DestroyRef) {}
 
   ngOnInit(): void {
-
-    this.formControl.valueChanges.pipe(takeUntilDestroyed(this.dr)).subscribe((changes) => {
+    this.form.valueChanges.pipe(takeUntilDestroyed(this.dr)).subscribe((changes) => {
       console.log("Form control value changes", changes)
     })
   }
 
-  disableInputs() {
-    this.formControl.disable();
-    this.customInputControl.disable();
-  }
-
-  enableInputs() {
-    this.formControl.enable();
-    this.customInputControl.enable();
-  }
-
   onSubmit() {
-    console.log("On submit simple input", this.formControl.value)
-    console.log("On submit custom input", this.customInputControl.value)
+    console.log("On submit", this.form.value)
   }
 }
